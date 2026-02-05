@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 | PRO SKATE 香港專業滾軸溜冰鞋專門店</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #111;
+            --secondary: #fff;
+            --accent: #ff6b00;
+            --light-gray: #f5f5f5;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--primary);
+            background: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .nav-logo a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-actions svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 140px 40px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            opacity: 0.5;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .story-content h2 span {
+            color: var(--accent);
+        }
+
+        .story-content p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .story-image {
+            background: var(--light-gray);
+            border-radius: 30px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+        }
+
+        /* Values */
+        .values {
+            background: var(--light-gray);
+            padding: 100px 40px;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        /* Timeline */
+        .timeline-section {
+            padding: 100px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Team */
+        .team {
+            background: var(--light-gray);
+            padding: 100px 40px;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-info h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .team-info p {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .team-info .desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand .logo span {
+            color: var(--accent);
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom p {
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .page-header {
+                padding: 120px 20px 40px;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .story, .values, .timeline-section, .team, .cta {
+                padding: 60px 20px;
+            }
+            .values-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo"><a href="index.html">PRO<span>SKATE</span></a></div>
+        <ul class="nav-links">
+            <li><a href="products.html">所有商品</a></li>
+            <li><a href="#">男裝</a></li>
+            <li><a href="#">女裝</a></li>
+            <li><a href="#">兒童</a></li>
+            <li><a href="#">配件</a></li>
+            <li><a href="about.html" class="active">關於我們</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+        <div class="nav-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>關於我們</h1>
+        <div class="breadcrumb">
+            <a href="index.html">首頁</a>
+            <span>/</span>
+            <span>關於我們</span>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story">
+        <div class="story-grid">
+            <div class="story-content">
+                <h2>香港滾軸溜冰<br><span>由我哋開始</span></h2>
+                <p>
+                    PRO SKATE 成立於2010年，致力於推廣滾軸溜冰運動。我哋相信，滾軸溜冰唔單止係一種運動，更係一種生活方式同埋對自由既追求。
+                </p>
+                <p>
+                    由最初嘅一間小店，到而家成為香港最大型嘅滾軸溜冰用品專門店，我哋一直堅持提供最專業既服務同最高質素既產品。
+                </p>
+                <p>
+                    我哋既團隊全部都係熱愛滾軸溜冰既專業人士，可以為你提供最專業既意見，幫你揀啱你既裝備。
+                </p>
+            </div>
+            <div class="story-image">🏆</div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <div class="values-container">
+            <div class="section-title">
+                <h2>我哋既宗旨</h2>
+                <p>為每位顧客提供最優質既滾軸溜冰體驗</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">✅</div>
+                    <h3>正貨保證</h3>
+                    <p>所有產品均為原裝正貨，品質有保證</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🛡️</div>
+                    <h3>專業維修</h3>
+                    <p>提供免費維修服務，延長產品壽命</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💬</div>
+                    <h3>貼心服務</h3>
+                    <p>專業團隊提供一對一意見</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚚</div>
+                    <h3>快速送貨</h3>
+                    <p>香港境內快速送貨，買得放心</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2>發展历程</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <h3>小店開張</h3>
+                <p>係九龍區開咗第一間舖頭，主打入門級滾軸溜冰鞋同配件。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2015</div>
+                <h3>擴充業務</h3>
+                <p>搬去更大既舖頭，引入更多國際品牌，包括Rollerblade、Powerslide等。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2018</div>
+                <h3>網店上線</h3>
+                <p>推出網上商店，令全港市民都可以輕鬆買到專業溜冰裝備。</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <h3>成為香港第一</h3>
+                <p>發展成為香港最大型既滾軸溜冰用品專門店，並開始提供團體培訓課程。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="team-container">
+            <div class="section-title">
+                <h2>專業團隊</h2>
+                <p>我哋既團隊全部都係經驗豐富既滾軸溜冰愛好者</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <div class="team-info">
+                        <h3>陳小明</h3>
+                        <p>創辦人</p>
+                        <p class="desc">10年溜冰經驗，前香港代表隊成員</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💼</div>
+                    <div class="team-info">
+                        <h3>李美美</h3>
+                        <p>營運總監</p>
+                        <p class="desc">負責店舖日常運作同顧客服務</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍🔧</div>
+                    <div class="team-info">
+                        <h3>阿偉</h3>
+                        <p>技術顧問</p>
+                        <p class="desc">專業溜冰鞋維修技師</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍🏫</div>
+                    <div class="team-info">
+                        <h3>阿婷婷</h3>
+                        <p>培訓導師</p>
+                        <p class="desc">負責初階同進階溜冰課程</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>準備好開始你既溜冰之旅未？</h2>
+        <p>無論你係初學者定係專業溜冰手，我哋都有啱你既裝備</p>
+        <a href="products.html" class="cta-button">去Shopping →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">PRO<span>SKATE</span></div>
+                <p>香港專業滾軸溜冰鞋專門店<br>
+                我們致力為您提供最優質的滾軸溜冰體驗</p>
+            </div>
+            <div class="footer-col">
+                <h4>購物指南</h4>
+                <ul>
+                    <li><a href="#">如何購買</a></li>
+                    <li><a href="#">送貨安排</a></li>
+                    <li><a href="#">退換政策</a></li>
+                    <li><a href="#">尺碼指南</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>客戶服務</h4>
+                <ul>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                    <li><a href="#">維修服務</a></li>
+                    <li><a href="#">常見問題</a></li>
+                    <li><a href="#">意見反饋</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>關於我們</h4>
+                <ul>
+                    <li><a href="about.html">品牌故事</a></li>
+                    <li><a href="#">門市位置</a></li>
+                    <li><a href="#">合作夥伴</a></li>
+                    <li><a href="#">加入我們</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PRO SKATE. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 | PRO SKATE 香港專業滾軸溜冰鞋專門店</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #111;
+            --secondary: #fff;
+            --accent: #ff6b00;
+            --light-gray: #f5f5f5;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--primary);
+            background: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .nav-logo a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-actions svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 140px 40px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            opacity: 0.5;
+        }
+
+        /* Contact Info Cards */
+        .contact-cards {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: var(--light-gray);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form & Map */
+        .contact-section {
+            padding: 0 40px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form-container {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-container h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            background: var(--light-gray);
+            border-radius: 30px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .map-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .map-placeholder h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .map-placeholder p {
+            color: var(--text-gray);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        /* Business Hours */
+        .hours-section {
+            background: var(--light-gray);
+            padding: 80px 40px;
+        }
+
+        .hours-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hours-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        .hours-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-row .day {
+            font-weight: 600;
+        }
+
+        .hours-row .time {
+            color: var(--text-gray);
+        }
+
+        .hours-row .time.closed {
+            color: #ff4757;
+        }
+
+        /* FAQ Quick Links */
+        .faq-section {
+            padding: 80px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .faq-section h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .faq-link {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .faq-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .faq-link h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .faq-link p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand .logo span {
+            color: var(--accent);
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom p {
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .page-header {
+                padding: 120px 20px 40px;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .contact-cards {
+                padding: 60px 20px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-section {
+                padding: 0 20px 60px;
+            }
+            .contact-form-container {
+                padding: 30px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .hours-section {
+                padding: 60px 20px;
+            }
+            .faq-section {
+                padding: 60px 20px;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo"><a href="index.html">PRO<span>SKATE</span></a></div>
+        <ul class="nav-links">
+            <li><a href="products.html">所有商品</a></li>
+            <li><a href="#">男裝</a></li>
+            <li><a href="#">女裝</a></li>
+            <li><a href="#">兒童</a></li>
+            <li><a href="#">配件</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="contact.html" class="active">聯絡我們</a></li>
+        </ul>
+        <div class="nav-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>聯絡我們</h1>
+        <div class="breadcrumb">
+            <a href="index.html">首頁</a>
+            <span>/</span>
+            <span>聯絡我們</span>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-cards">
+        <div class="cards-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>門市地址</h3>
+                <p>香港九龍旺角<br>彌敦道 610 號<br>荷里活商業中心 15 樓</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>電話</h3>
+                <p><a href="tel:+85223456789">+852 2345 6789</a></p>
+                <p>星期一至六: 10:00-20:00</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/85223456789">+852 2345 6789</a></p>
+                <p>快速回覆您既查詢</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>電郵</h3>
+                <p><a href="mailto:info@pro-skate.com.hk">info@pro-skate.com.hk</a></p>
+                <p>24小時內回覆</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-form-container">
+                <h2>傳送訊息俾我哋</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" placeholder="你既名">
+                        </div>
+                        <div class="form-group">
+                            <label>電話</label>
+                            <input type="tel" placeholder="聯絡電話">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>電郵</label>
+                        <input type="email" placeholder="電郵地址">
+                    </div>
+                    <div class="form-group">
+                        <label>查詢類型</label>
+                        <select>
+                            <option>請選擇...</option>
+                            <option>產品查詢</option>
+                            <option>價錢報價</option>
+                            <option>維修服務</option>
+                            <option>訂單問題</option>
+                            <option>合作機會</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>訊息內容</label>
+                        <textarea placeholder="Write你既查詢內容..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send訊息 →</button>
+                </form>
+            </div>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-icon">🗺️</div>
+                    <h3>香港九龍旺角</h3>
+                    <p>彌敦道 610 號<br>荷里活商業中心 15 樓</p>
+                    <p style="margin-top: 20px; font-size: 0.85rem; color: var(--accent);">
+                        (可放入Google Maps embed)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="hours-section">
+        <div class="hours-container">
+            <h2>營業時間</h2>
+            <div class="hours-table">
+                <div class="hours-row">
+                    <span class="day">星期一</span>
+                    <span class="time">10:00 AM - 08:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">星期二</span>
+                    <span class="time">10:00 AM - 08:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">星期三</span>
+                    <span class="time">10:00 AM - 08:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">星期四</span>
+                    <span class="time">10:00 AM - 08:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">星期五</span>
+                    <span class="time">10:00 AM - 08:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">星期六</span>
+                    <span class="time">10:00 AM - 08:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">星期日</span>
+                    <span class="time">12:00 PM - 06:00 PM</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">公眾假期</span>
+                    <span class="time closed">休息</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Quick Links -->
+    <section class="faq-section">
+        <h2>其他問題？</h2>
+        <div class="faq-grid">
+            <a href="#" class="faq-link">
+                <h4>送貨問題</h4>
+                <p>了解送貨時間同運費</p>
+            </a>
+            <a href="#" class="faq-link">
+                <h4>退換政策</h4>
+                <p>7日退換服務詳情</p>
+            </a>
+            <a href="#" class="faq-link">
+                <h4>尺碼選擇</h4>
+                <p>點樣揀啱SIZE</p>
+            </a>
+            <a href="#" class="faq-link">
+                <h4>維修服務</h4>
+                <p>維修預約同價錢</p>
+            </a>
+            <a href="#" class="faq-link">
+                <h4>付款方式</h4>
+                <p>接受咩Payment</p>
+            </a>
+            <a href="#" class="faq-link">
+                <h4>批發查詢</h4>
+                <p>B2B合作機會</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">PRO<span>SKATE</span></div>
+                <p>香港專業滾軸溜冰鞋專門店<br>
+                我們致力為您提供最優質的滾軸溜冰體驗</p>
+            </div>
+            <div class="footer-col">
+                <h4>購物指南</h4>
+                <ul>
+                    <li><a href="#">如何購買</a></li>
+                    <li><a href="#">送貨安排</a></li>
+                    <li><a href="#">退換政策</a></li>
+                    <li><a href="#">尺碼指南</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <4>客戶服務</h4>
+                <ul>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                    <li><a href="#">維修服務</a></li>
+                    <li><a href="#">常見問題</a></li>
+                    <li><a href="#">意見反饋</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>關於我們</h4>
+                <ul>
+                    <li><a href="about.html">品牌故事</a></li>
+                    <li><a href="#">門市位置</a></li>
+                    <li><a href="#">合作夥伴</a></li>
+                    <li><a href="#">加入我們</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PRO SKATE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('多謝你既查詢！我哋會盡快回覆你！');
+        });
+    </script>
+</body>
+</html>
