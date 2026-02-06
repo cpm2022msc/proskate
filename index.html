@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRO SKATE 香港專業滾軸溜冰鞋專門店</title>
+    <audio id="bgm" loop>
+        <source src="theme-song.mp3" type="audio/mpeg">
+    </audio>
     <style>
         * {
             margin: 0;
@@ -80,6 +83,19 @@
             display: flex;
             gap: 20px;
             align-items: center;
+        }
+
+        .music-control {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
         }
 
         .nav-actions svg {
@@ -610,6 +626,9 @@
             <li><a href="contact.html">聯絡我們</a></li>
         </ul>
         <div class="nav-actions">
+            <button class="music-control" onclick="toggleMusic()" title="播放背景音樂">
+                🔇
+            </button>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
                 <path d="M21 21l-4.35-4.35"/>
@@ -840,6 +859,31 @@
     </footer>
 
     <script>
+        // Music control
+        let isPlaying = false;
+        const bgm = document.getElementById('bgm');
+        const musicBtn = document.querySelector('.music-control');
+        
+        function toggleMusic() {
+            if (isPlaying) {
+                bgm.pause();
+                musicBtn.textContent = '🔇';
+            } else {
+                bgm.play().catch(e => {
+                    console.log('Autoplay blocked - user needs to interact first');
+                    alert('請先Click anywhere on page一次，然後再Click音樂按鈕！');
+                });
+                musicBtn.textContent = '🔊';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Enable audio after user interaction
+        document.addEventListener('click', function enableAudio() {
+            bgm.muted = false;
+            document.removeEventListener('click', enableAudio);
+        }, { once: true });
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
