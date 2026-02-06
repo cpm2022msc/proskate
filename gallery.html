@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - PRO SKATE 香港專業滾軸溜冰鞋專門店</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #111;
+            --secondary: #fff;
+            --accent: #ff6b00;
+            --light-gray: #f5f5f5;
+            --text-gray: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--primary);
+            background: var(--secondary);
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Gallery Header */
+        .gallery-header {
+            padding: 120px 40px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+        }
+
+        .gallery-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .gallery-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Slider Section */
+        .slider-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            aspect-ratio: 16/9;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .slider-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+        }
+
+        .slider-content {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            color: white;
+            z-index: 1;
+        }
+
+        .slider-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .slider-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            aspect-ratio: 1;
+            background: var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 40px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">PRO<span>SKATE</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="products.html">產品</a></li>
+            <li><a href="gallery.html">相簿</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+    </nav>
+
+    <!-- Gallery Header -->
+    <header class="gallery-header">
+        <h1>活動相簿</h1>
+        <p>滑出精彩時刻 · 記錄每一個滑行足跡</p>
+    </header>
+
+    <!-- Slider Section -->
+    <section class="slider-section">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="slider">
+                <!-- Slides loaded dynamically from slider folder -->
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn" onclick="prevSlide()">←</button>
+            <div class="slider-dots" id="dots"></div>
+            <button class="slider-btn" onclick="nextSlide()">→</button>
+        </div>
+    </section>
+
+    <!-- Photo Grid -->
+    <section class="gallery-grid">
+        <h2>精選相片</h2>
+        <div class="photo-grid" id="photoGrid">
+            <!-- Photos loaded dynamically from slider folder -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>聯絡我們</h4>
+                <p>📍 香港九龍旺角<br>彌敦道608號<br>總統商業大厦</p>
+                <p>📞 +852 1234 5678</p>
+                <p>📧 info@pro-skate.com.hk</p>
+            </div>
+            <div class="footer-section">
+                <h4>營業時間</h4>
+                <p>星期一至六: 11:00 - 20:00<br>星期日: 12:00 - 18:00<br>公眾假期: 休息</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速連結</h4>
+                <p><a href="products.html">產品目錄</a></p>
+                <p><a href="gallery.html">活動相簿</a></p>
+                <p><a href="about.html">關於我們</a></p>
+                <p><a href="contact.html">聯絡我們</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PRO SKATE 香港專業滾軸溜冰鞋專門店. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slider and Gallery - Images from /slider folder
+        // Just add images to the /slider folder and they'll appear automatically!
+        
+        const sliderFolder = 'slider/';
+        
+        // Sample images - replace these with your actual images in /slider folder
+        const sampleImages = [
+            { src: sliderFolder + 'slide1.jpg', title: '🏆 香港滾軸溜冰大賽 2024', desc: '專業選手精彩競逐 · 冠軍時刻' },
+            { src: sliderFolder + 'slide2.jpg', title: '👶 兒童溜冰訓練班', desc: '快樂學習 · 安全成長' },
+            { src: sliderFolder + 'slide3.jpg', title: '🌟 初學者體驗日', desc: '第一次踏上滑輪 · 感受自由飛翔' },
+            { src: sliderFolder + 'slide4.jpg', title: '🎉 滾軸派對之夜', desc: '音樂與滑行 · 燃燒熱情' },
+            { src: sliderFolder + 'photo1.jpg', title: '' },
+            { src: sliderFolder + 'photo2.jpg', title: '' },
+            { src: sliderFolder + 'photo3.jpg', title: '' },
+            { src: sliderFolder + 'photo4.jpg', title: '' },
+            { src: sliderFolder + 'photo5.jpg', title: '' },
+            { src: sliderFolder + 'photo6.jpg', title: '' },
+            { src: sliderFolder + 'photo7.jpg', title: '' },
+            { src: sliderFolder + 'photo8.jpg', title: '' },
+            { src: sliderFolder + 'photo9.jpg', title: '' },
+            { src: sliderFolder + 'photo10.jpg', title: '' },
+            { src: sliderFolder + 'photo11.jpg', title: '' },
+            { src: sliderFolder + 'photo12.jpg', title: '' }
+        ];
+
+        // Load Slider
+        const slider = document.getElementById('slider');
+        const dotsContainer = document.getElementById('dots');
+        let currentSlide = 0;
+        const sliderImages = sampleImages.filter(img => img.title);
+
+        // Create slider slides
+        sliderImages.forEach((img, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'slider-slide';
+            slide.style.backgroundImage = `url('${img.src}')`;
+            slide.innerHTML = `
+                <div class="slider-content">
+                    <h3>${img.title}</h3>
+                    <p>${img.desc}</p>
+                </div>
+            `;
+            slider.appendChild(slide);
+
+            const dot = document.createElement('div');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        });
+
+        // Slider functions
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % sliderImages.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Load Photo Grid (all images)
+        const photoGrid = document.getElementById('photoGrid');
+        sampleImages.forEach((img, i) => {
+            const item = document.createElement('div');
+            item.className = 'photo-item';
+            item.innerHTML = `<img src="${img.src}" alt="Photo ${i+1}" loading="lazy">`;
+            photoGrid.appendChild(item);
+        });
+    </script>
+</body>
+</html>
