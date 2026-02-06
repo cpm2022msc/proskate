@@ -108,7 +108,8 @@
         .hero {
             height: 100vh;
             min-height: 600px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            background: url('hero-bg.jpg') center center no-repeat;
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -123,9 +124,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ffffff10" stroke-width="0.5"/></svg>');
-            background-size: 200px;
-            opacity: 0.5;
+            background: rgba(0,0,0,0.6);
         }
 
         .hero-content {
@@ -136,11 +135,11 @@
         }
 
         .hero-tagline {
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 15px;
-            opacity: 0.8;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-title {
@@ -149,6 +148,7 @@
             line-height: 1;
             margin-bottom: 20px;
             letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-title span {
@@ -161,11 +161,11 @@
 
         .hero-desc {
             font-size: 1.1rem;
-            opacity: 0.9;
             margin-bottom: 30px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .hero-buttons {
@@ -619,7 +619,9 @@
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <a href="index.html" class="nav-logo">PRO<span>SKATE</span></a>
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="PRO SKATE" style="height: 40px;">
+        </a>
         <ul class="nav-links">
             <li><a href="products.html">所有商品</a></li>
             <li><a href="gallery.html">活動相簿</a></li>
